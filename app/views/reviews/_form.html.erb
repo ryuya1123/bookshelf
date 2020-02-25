@@ -1,7 +1,7 @@
 <%= form_with(model: review, local: true) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this book from being saved:</h2>
 
       <ul>
       <% review.errors.full_messages.each do |message| %>
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :book_id %>
-    <%= form.number_field :book_id %>
+    <%= select_tag :book_id, options_for_select(Book.all.map{|book| [book.title, book.id]}) %>
   </div>
 
   <div class="actions">

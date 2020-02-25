@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :require_user_logged_in
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:destroy]
 
   # GET /reviews
   # GET /reviews.json
@@ -70,5 +72,12 @@ class ReviewsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def review_params
       params.require(:review).permit(:title, :body, :book_id)
+    end
+    
+    def correct_user
+      @review = current_user.reviews.find_by(id: params[:id])
+      unless @review
+        redirect_to root_url
+      end
     end
 end

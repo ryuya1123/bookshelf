@@ -74,4 +74,7 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-rails'
 end
+
 gem 'kaminari'
+
+gem 'carrierwave'

@@ -25,6 +25,24 @@
     <%= form.label :price %>
     <%= form.number_field :price %>
   </div>
+  
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, [["既読", "既読"], ["未読", "未読"], ["読書中", "読書中"]] %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :image %>
+    <%= image_tag @book.image.url if @book.image? %>
+    <%= form.file_field :image, id: :book_image %>
+    <%= form.submit 'アップロードする' %>
+    <p><%= form.check_box :remove_image %>画像を削除する</p>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

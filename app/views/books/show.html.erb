@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag @book.image.url if @book.image? %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
@@ -13,6 +18,16 @@
 <p>
   <strong>Price:</strong>
   <%= @book.price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @book.status %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @book.content %>
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
